@@ -1,0 +1,49 @@
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  annotations: {}
+  labels:
+    app: "inventory"
+  name: "inventory"
+spec:
+  ports:
+  - port: 80
+    protocol: "TCP"
+    targetPort: 80
+    name: "http"
+  selector:
+    app: "inventory"
+  type: "ClusterIP"
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  annotations: {}
+  labels:
+    app: "inventory"
+  name: "inventory-deployment"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "inventory"
+  template:
+    metadata:
+      annotations: {}
+      labels:
+        app: "inventory"
+    spec:
+      containers:
+      - image: "pubudu/inventory:1.0.0"
+        imagePullPolicy: "Always"
+        livenessProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          tcpSocket:
+            port: 80
+        name: "inventory-deployment"
+        ports:
+        - containerPort: 80
+          protocol: "TCP"
+      nodeSelector: {}
