@@ -1,6 +1,8 @@
 # Microservice sample
 
-Tested on Ballerina v0.991.0 version.
+![alt text](https://raw.githubusercontent.com/pubudu538/microservices-samples/master/services.png)
+
+*Note:* Tested on Ballerina v0.991.0 version.
 
 ```
 - Use EXTERNAL-IP as INGRESS_GATEWAY_IP from the following command
@@ -11,3 +13,4 @@ kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.por
 
 Note: In Docker for Mac INGRESS_GATEWAY_PORT is port 80.
 ```
+
