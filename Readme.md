@@ -5,6 +5,12 @@
 *Note:* Tested on Ballerina v0.991.0 version.
 
 ```
+-  Deploy Services
+
+kubectl create -f inventory/inventory.yaml
+kubectl create -f review/review.yaml
+kubectl create -f products-v1.0.0/products.yaml
+
 - Use EXTERNAL-IP as INGRESS_GATEWAY_IP from the following command
 kubectl get svc istio-ingressgateway -n istio-system
 
